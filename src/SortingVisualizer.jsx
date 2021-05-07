@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {arrayOperations} from "./arrayOperations";
 import Array from "./components/Array"
+import Header from "./components/Header";
 import "./SortingVisualizer.css"
 
 const SortingVisualizer = () => {
@@ -31,7 +32,7 @@ const SortingVisualizer = () => {
                     })
                         array[j].onColumn = false;
                         array[j+1].onColumn = false;
-                }, 15)
+                }, 30)
             }
         }
         
@@ -40,12 +41,24 @@ const SortingVisualizer = () => {
         })
     }
 
+    const generateNewArray = () => {
+        setArrayState({
+            array: arrayOperations(150, 600)
+        })
+    }
+
     return (
-        <div className="body">
-            <button onClick={()=>bubbleSort(arrayState.array)}>AA</button>
-            <Array 
+        <div>
+            <Header 
                 array = {arrayState.array}
+                generateNewArray = {generateNewArray}
+                bubbleSort = {bubbleSort}
             />
+            <div className="body">
+                <Array 
+                    array = {arrayState.array}
+                />
+            </div>
         </div>
     )
 }
