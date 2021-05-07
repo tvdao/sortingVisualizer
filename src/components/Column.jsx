@@ -1,14 +1,16 @@
 import React from "react";
 import "./Column.css";
 
-const Column = ({height}) => {
+const Column = ({height, onColumn, end}) => {
 
     const style = {
         height: height + 'px'
     }
 
     const classStyle = [
-        "column"
+        "column",
+        onColumn ? "on-column" : "",
+        end ? "end" : ""
     ]
 
     return (

@@ -9,7 +9,9 @@ const Array = ({array}) => {
                 return (
                     <Column 
                         key = {columnId}
-                        height = {column}
+                        height = {column.height}
+                        onColumn = {column.onColumn}
+                        end = {column.end}
                     />
                 )
             })}

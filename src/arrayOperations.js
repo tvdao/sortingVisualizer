@@ -12,7 +12,11 @@ const arrayOperations = (length, maxNum) => {
     while (array.length < length) {
         let currNumber = Math.floor(Math.random() * maxNum) + 1;
         if (array.indexOf(currNumber) === -1) {
-            array.push(currNumber);
+            array.push({
+                height: currNumber,
+                onColumn: false,
+                end: false
+            });
         }
     }
     return array;

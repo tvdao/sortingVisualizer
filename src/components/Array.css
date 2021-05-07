@@ -1,4 +1,6 @@
 .array {
-    text-align: center;
-    margin-top: 200px;
+    margin: 10% 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }

@@ -1,4 +1,9 @@
-const bubbleSort = (array) => {
+import React, {useState} from "react";
+
+const BubbleSort = ({array}) => {
+
+    const [arr, setArr] = useState(array);
+
     const arrLength = array.length;
     for (let i = 0; i < arrLength-1; i++) {
         for (let j = 0; j < arrLength - i - 1; j++) {
@@ -12,4 +17,4 @@ const bubbleSort = (array) => {
     return array;
 }
 
-export {bubbleSort};
+export default BubbleSort;
