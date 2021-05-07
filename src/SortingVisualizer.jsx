@@ -34,6 +34,7 @@ const SortingVisualizer = () => {
                 }, 15)
             }
         }
+        
         setArrayState({
             array: array
         })
