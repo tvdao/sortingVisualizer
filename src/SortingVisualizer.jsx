@@ -10,11 +10,11 @@ const SortingVisualizer = () => {
         array: arrayOperations(150, 600)
     });
 
-    const bubbleSort = (array) => {
+    const bubbleSort = () => {
+        let array = arrayState.array;
         const arrLength = array.length;
         for (let i = 0; i < arrLength-1; i++) {
             for (let j = 0; j < arrLength - i - 1; j++) {
-
                 setTimeout( () => {
                     array[j].onColumn = true;
                     array[j+1].onColumn = true;
@@ -30,15 +30,43 @@ const SortingVisualizer = () => {
                     setArrayState({
                         array: array
                     })
-                        array[j].onColumn = false;
-                        array[j+1].onColumn = false;
-                }, 30)
+                    array[j].onColumn = false;
+                    array[j+1].onColumn = false;
+                })
             }
         }
-        
-        setArrayState({
-            array: array
-        })
+    }
+
+    const selectionSort = () => {
+        let array = arrayState.array;
+        const arrLength = array.length;
+        for (let i = 0; i < arrLength-1; i++) {
+            let min_index = i;
+            setTimeout( () => {
+                array[i].onColumn = true;
+                for (let j = i+1; j < arrLength; j++) {
+                    array[j].onColumn = true;
+                    if (array[j].height < array[min_index].height) {
+                        min_index = j;
+                    }
+                    setArrayState({
+                        array: array
+                    })
+                    array[j].onColumn = false;
+                }
+                let temp = array[i];
+                array[i] = array[min_index];
+                array[min_index] = temp;
+                array[i].onColumn = false;
+                array[i].end = true;
+                if (i === arrLength - 2) {
+                    array[i+1].end = true;
+                }
+                setArrayState({
+                    array: array
+                })
+            })
+        }
     }
 
     const generateNewArray = () => {
@@ -50,14 +78,15 @@ const SortingVisualizer = () => {
     return (
         <div>
             <Header 
-                array = {arrayState.array}
                 generateNewArray = {generateNewArray}
                 bubbleSort = {bubbleSort}
+                selectionSort = {selectionSort}
             />
             <div className="body">
                 <Array 
                     array = {arrayState.array}
                 />
+                <h1>{arrayState.array[0].height + " " + arrayState.array[1].height}</h1>
             </div>
         </div>
     )

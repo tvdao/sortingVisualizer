@@ -1,7 +1,7 @@
 import React from "react";
 import "./Header.css";
 
-const Header = ({generateNewArray, array, bubbleSort}) => {
+const Header = ({generateNewArray, bubbleSort, selectionSort}) => {
     return (
         <div className="header">
             <div className="button-div">
@@ -11,11 +11,13 @@ const Header = ({generateNewArray, array, bubbleSort}) => {
             </div>
             <div className="button-div">
                 <p className="buttons" onClick={() => {
-                    bubbleSort(array);
+                    bubbleSort();
                 }}>Bubble Sort</p>
             </div>
             <div className="button-div">
-                <p className="buttons">Merge Sort</p>
+                <p className="buttons" onClick={() => {
+                    selectionSort();
+                }}>Selection Sort</p>
             </div>
         </div>
     )
