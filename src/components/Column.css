@@ -1,0 +1,17 @@
+.column {
+    display: inline-block;
+    margin: 0 0.5px;
+    border: .5px solid;
+}
+
+.column-default {
+    background-color: teal;
+}
+
+.column-current {
+    background-color: red;
+}
+
+.column-done {
+    background-color: lightgreen;
+}
