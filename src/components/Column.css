@@ -12,6 +12,10 @@
     background-color: red;
 }
 
+.column-highlight {
+    background-color: plum;
+}
+
 .column-done {
     background-color: lightgreen;
 }

@@ -30,7 +30,7 @@ const Slider = ({ name, min, max, step, optionType, onChange, running, val }) =>
                     disabled = {optionType == SIZE ? running : false}
                 />
             </Col>
-            <Col xs="1">
+            <Col xs="2">
                 <Form.Control
                     value = {value}
                     readOnly

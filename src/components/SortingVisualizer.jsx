@@ -24,6 +24,7 @@ import {
     DEFAULT_LIST_SIZE,
     DEFAULT_SPEED,
     DONE,
+    HIGHLIGHT,
     INSERTION_SORT,
     MERGE_SORT,
     NONE,
@@ -86,13 +87,14 @@ const SortingVisualizer = () => {
         let newList = [...list]
         if (algorithm == BUBBLE_SORT) {
             moves = await bubbleSort(newList)
+            console.log(await mergeSort([38,27,43,3,9,82,10]))
         } else if (algorithm == INSERTION_SORT) {
             moves = await insertionSort(newList)
         } else if (algorithm == SELECTION_SORT) {
             moves = await selectionSort(newList)
         } else if (algorithm == MERGE_SORT) {
             moves = await mergeSort(newList)
-            console.log(moves)
+            console.log(newList)
         }
         return moves;
     }
@@ -122,17 +124,29 @@ const SortingVisualizer = () => {
     }
 
     const visualizeInRange = async(moves) => {
-        let prevRange = []
-        while (moves.length > 0 && moves[0].length == 4) {
-            if (prevRange != moves[0][3]) {
-                await updateElementState(prevRange, NORMAL)
-                prevRange = moves[0][3]
-                await updateElementState(moves[0][3], CURRENT)
+        while (moves.length > 0) {
+            let currentMove = moves.shift();
+            let indexes = [currentMove[0], currentMove[1]]
+            let moveType = currentMove[2]
+            // let range = currentMove[3]
+            // show the range 
+            await updateElementState(indexes, CURRENT)
+            if (moveType == SWAP) {
+                await updateList(indexes)
             }
-            await updateElementValue([moves[0][0], moves[0][1]])
-            moves.shift()
+            await updateElementState(indexes, HIGHLIGHT)
+
         }
-        console.log(moves)
+        // while (moves.length > 0 && moves[0].length == 4) {
+        //     if (prevRange != moves[0][3]) {
+        //         await updateElementState(prevRange, NORMAL)
+        //         prevRange = moves[0][3]
+        //         await updateElementState(moves[0][3], CURRENT)
+        //     }
+        //     await updateElementValue([moves[0][0], moves[0][1]])
+        //     moves.shift()
+        // }
+        // console.log(moves)
         await visualize(moves)
     }
 
@@ -144,11 +158,11 @@ const SortingVisualizer = () => {
         await setList(newList)
     }
 
-    const updateElementValue = async(indexes) => {
-        let newList = [...list]
-        newList[indexes[[0]]].height = indexes[1]
-        await setList(newList)
-    }
+    // const updateElementValue = async(indexes) => {
+    //     let newList = [...list]
+    //     newList[indexes[[0]]].height = indexes[1]
+    //     await setList(newList)
+    // }
 
     const updateList = async(indexes) => {
         swap(list, indexes[0], indexes[1])
