@@ -16,7 +16,7 @@ const getState = (state) => {
 }
 
 const Column = ({height, width, stateType}) => {
-    // console.log(width)
+    
     const style = {
         height: height + "vh",
         width: width + "%",
