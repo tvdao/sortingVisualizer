@@ -4,13 +4,13 @@ import {
     ALGORITHMS
 } from "../helper/constants"
 
-const Algorithm = ({value, name, onChange, setDropDownState}) => {
-
+const Algorithm = ({value, name, onChange, setDropDownState, style}) => {
+    
     return (
         <NavDropdown.Item as="button" onClick={() => {
             setDropDownState({value: name})
             onChange(value, ALGORITHMS)
-        }}>{name}</NavDropdown.Item>
+        }} style={style}>{name}</NavDropdown.Item>
     )
 }
 

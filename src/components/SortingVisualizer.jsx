@@ -82,6 +82,7 @@ const SortingVisualizer = () => {
     }
 
     const getMoves = async() => {
+        let start, end
         let moves = [];
         let newList = [...list]
         if (algorithm == BUBBLE_SORT) {
@@ -92,8 +93,8 @@ const SortingVisualizer = () => {
             moves = await selectionSort(newList)
         } else if (algorithm == MERGE_SORT) {
             moves = await mergeSort(newList)
-            console.log(moves)
         }
+        console.log(end - start)
         return moves;
     }
 
@@ -102,7 +103,7 @@ const SortingVisualizer = () => {
             return;
         }
         if (moves[0].length == 4) {
-            await visualizeInRange(moves)
+            await visualizeInRange([...moves])
         } else {
             await visualizeBySwapping([...moves])
         }
@@ -123,17 +124,17 @@ const SortingVisualizer = () => {
 
     const visualizeInRange = async(moves) => {
         let prevRange = []
-        while (moves.length > 0 && moves[0].length == 4) {
-            if (prevRange != moves[0][3]) {
-                await updateElementState(prevRange, NORMAL)
-                prevRange = moves[0][3]
-                await updateElementState(moves[0][3], CURRENT)
+        while (moves.length > 0 && moves[0].length === 4) {
+            // change range only when required to avoid blinking
+            if(prevRange !== moves[0][3]) {
+                await updateElementState(prevRange, NORMAL);
+                prevRange = moves[0][3];
+                await updateElementState(moves[0][3], CURRENT);
             }
-            await updateElementValue([moves[0][0], moves[0][1]])
-            moves.shift()
+            await updateElementValue([moves[0][0], moves[0][1]]);
+            moves.shift();
         }
-        console.log(moves)
-        await visualize(moves)
+        await visualize(moves);
     }
 
     const updateElementState = async(indexes, stateType) => {
@@ -145,9 +146,8 @@ const SortingVisualizer = () => {
     }
 
     const updateElementValue = async(indexes) => {
-        let newList = [...list]
-        newList[indexes[[0]]].height = indexes[1]
-        await setList(newList)
+        list[indexes[0]] = indexes[1]
+        await setList(list)
     }
 
     const updateList = async(indexes) => {
@@ -181,6 +181,7 @@ const SortingVisualizer = () => {
                 onChange = {onChange}
                 start = {start}
                 size = {size}
+                running = {running}
             />
             <Body 
                 array = {list}

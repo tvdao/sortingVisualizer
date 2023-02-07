@@ -20,7 +20,7 @@ import {
 
 import "./Header.css";
 
-const Header = ({generateNewArray, onChange, start, size}) => {
+const Header = ({generateNewArray, onChange, start, size, running}) => {
 
     const [dropDownState, setDropDownState] = useState({
         value: DEFAULT_DROPDOWN_VALUE
@@ -33,15 +33,26 @@ const Header = ({generateNewArray, onChange, start, size}) => {
         {value: MERGE_SORT, name: "Merge Sort"},
     ]
 
+    const navOptionStyle = {
+       "fontSize": 1.5 + "vw",
+    }
+
+    const brandStyle = {
+       "fontSize": 3 + "vw",
+    }
+
     return (
         <Navbar bg="dark" variant="dark">
-            <Container className="justify-content-md-center">
-                <Navbar.Brand>Sorting Visualizer</Navbar.Brand>
-                <Nav>
+            <Container>
+                <Navbar.Brand style={brandStyle}>Sorting Visualizer</Navbar.Brand>
+                <Nav className="justify-content-md-center" style={navOptionStyle}>
                     <Nav.Item><Nav.Link onClick={() => generateNewArray(size)}>Generate New Array</Nav.Link></Nav.Item>
                     <Nav.Item><Nav.Link onClick={() => start()}>Run Algorithm</Nav.Link></Nav.Item>
                     <div className="algorithms">
-                        <NavDropdown title={dropDownState.value} className="basic-nav-dropdown">
+                        <NavDropdown 
+                            title={dropDownState.value} 
+                            disabled={running}
+                            className="basic-nav-dropdown">
                             {algorithms.map((element, elementId) => {
                                 return (
                                     <Algorithm 
@@ -50,6 +61,7 @@ const Header = ({generateNewArray, onChange, start, size}) => {
                                         name = {element.name}
                                         onChange = {onChange}
                                         setDropDownState = {setDropDownState}
+                                        style = {navOptionStyle}
                                     />
                                 )
                             })}
