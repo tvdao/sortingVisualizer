@@ -181,6 +181,7 @@ const SortingVisualizer = () => {
                 onChange = {onChange}
                 start = {start}
                 size = {size}
+                running = {running}
             />
             <Body 
                 array = {list}

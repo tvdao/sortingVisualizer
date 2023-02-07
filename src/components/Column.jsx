@@ -1,5 +1,5 @@
 import React from "react"
-import {NORMAL, CURRENT, HIGHLIGHT} from "./helper/constants";
+import {NORMAL, CURRENT} from "./helper/constants";
 import "./Column.css"
 
 // to change css class for color of columns
@@ -8,8 +8,6 @@ const getState = (state) => {
         return 'column-default'
     } else if (state == CURRENT) {
         return 'column-current'
-    } else if (state == HIGHLIGHT) {
-        return 'column-highlight'
     } else {
         return 'column-done'
     }

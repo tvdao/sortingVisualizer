@@ -20,7 +20,7 @@ import {
 
 import "./Header.css";
 
-const Header = ({generateNewArray, onChange, start, size}) => {
+const Header = ({generateNewArray, onChange, start, size, running}) => {
 
     const [dropDownState, setDropDownState] = useState({
         value: DEFAULT_DROPDOWN_VALUE
@@ -49,7 +49,10 @@ const Header = ({generateNewArray, onChange, start, size}) => {
                     <Nav.Item><Nav.Link onClick={() => generateNewArray(size)}>Generate New Array</Nav.Link></Nav.Item>
                     <Nav.Item><Nav.Link onClick={() => start()}>Run Algorithm</Nav.Link></Nav.Item>
                     <div className="algorithms">
-                        <NavDropdown title={dropDownState.value} className="basic-nav-dropdown">
+                        <NavDropdown 
+                            title={dropDownState.value} 
+                            disabled={running}
+                            className="basic-nav-dropdown">
                             {algorithms.map((element, elementId) => {
                                 return (
                                     <Algorithm 
