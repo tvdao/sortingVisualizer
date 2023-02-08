@@ -1,70 +1,44 @@
-# Getting Started with Create React App
+# Sorting Visualizer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project visually shows the steps of different sorting algorithms on an array.
+<br /><br />
+Click here for a [Live Demo](https://tvdao.github.io/sortingVisualizer/)
+<br /><br />
+![Image of App](images/introPic.png)
 
-## Available Scripts
+## Overview:
 
-In the project directory, you can run:
+This project visualizes popular sorting algorithms such as bubble sort, merge sort, etc. <br />
+The size of the array can be adjusted as well as the speed of the visualization. <br />
+The app was all built in React.
 
-### `npm start`
+## Intro:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+I built this project to get a better understanding on common sorting algorithms. <br />
+I thought creating a visual representation would help support me the most in understanding since I am a visual learner. 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Meet The Algorithms:
 
-### `npm test`
+### Bubble Sort
+- Repeatedly swaps the adjacent element if they are in the wrong order.
+- Time: O(N^2)
+- Space: O(1)
+<br /><br />
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Insertion Sort
+- Conceptually, the algorithm splits the array into 2 parts, unsorted and sorted. Values from the unsorted are put into the correct position in the sorted part.
+- Time: O(N^2)
+- Space: O(1)
+<br /><br />
 
-### `npm run build`
+### Selection Sort
+- Starting at index i, it grabs the smallest element from the subarray: [i, length of array] for 0 <= i < length of array.
+- Time: O(N^2)
+- Space: O(1)
+<br /><br />
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Merge Sort
+- Divided the array into smaller subarrays, sorting each subarray, and then merges the sorted subarrays.
+- Time: O(nlogn)
+- Space: O(n)
+<br /><br />

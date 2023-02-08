@@ -15,7 +15,7 @@ const Slider = ({ name, min, max, step, optionType, onChange, running, val }) =>
     return (
         <Form.Group as={Row} className="justify-content-md-left mb-2">
             <Col xs="1"></Col>
-            <Col xs="1">{name}</Col>
+            <Col xs="2">{name}</Col>
             <Col xs="3">
                 <Form.Range
                     value = {value}
